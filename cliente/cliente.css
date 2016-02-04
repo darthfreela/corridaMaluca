@@ -1,0 +1,63 @@
+body {
+	background: rgba(0, 192, 239, 0.51);
+	font-family: 'Arial';
+}
+
+/*=============================================INDEX CLIENTE======================================*/
+/*Div Central*/	
+.divcentral {
+	position: relative !important;
+	text-align: center;
+	width:100%;
+}
+/*BOTAO PADRAO*/
+.btn {
+	position: relative;
+    width: 4em;
+    height: 2em;
+    font-size: 6em;
+    color: white;
+}
+/*BOTAO VERDE*/
+.botao1{
+	background: #00a65a;
+	border:solid 1px black;
+}
+/*BOTAO VERDE EFEITO*/
+.botao1:hover{
+	background: rgba(0, 166, 90, 0.61);
+	border:solid 3px black;
+}
+/*BOTAO VERMELHO*/
+.botao2{
+	background: #dd4b39;
+	border:solid 1px black;
+}
+
+/*BOTAO VERMELHO EFEITO*/
+.botao2:hover{
+	background: rgba(221, 75, 57, 0.64);
+	border:solid 3px black;
+}
+/*div com pergunta*/
+.divPergunta {
+	margin-top: 5em;
+	margin-bottom: 5em;
+}
+/*Pergunta*/
+.spanPergunta{
+	position: relative;
+	font-size: 5em;
+	margin-bottom: 5em;
+	
+}
+/*============================FIM CLIENTE INDEX=============================================================*/
+/*============================INICIO CLIENTE SIM=============================================================*/
+.txtNumero {
+	position: relative;
+    width: 21em;
+    height: 3em;
+    font-size: 3em;
+    color: BLACK;
+    text-align: center;
+}
