@@ -61,3 +61,30 @@ body {
     color: BLACK;
     text-align: center;
 }
+
+/*tela que cai*/
+.divCai{
+	position: absolute;
+	text-align: center;
+	background-color: green; 
+	top: 0;
+	left: 0;
+	height: 36em;
+    width: 100%;
+    z-index: 1;
+}
+
+.testocai{
+	font-size: 5em;
+}
+
+.botaocai{
+	position: relative;
+	width: 100%;
+    height: 5em;
+	top: 2em;
+	font-size: 2em;
+	color: blue;
+	
+	
+}
