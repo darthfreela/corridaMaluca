@@ -34,7 +34,7 @@
     <div class="wrapper">
 
         <header class="main-header">
-            <a href="index2.html" class="logo">
+            <a href="index2.php" class="logo">
                 <span class="logo-mini"><b>CM</b></span>
                 <span class="logo-lg"><b>Corrida Maluca</b></span>
             </a>
@@ -92,10 +92,10 @@
                             <span class="label label-primary pull-right">4</span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../../pages/cadastros/clientes.html"><i class="fa fa-circle-o"></i>Clientes</a></li>
-                            <li><a href="../../pages/cadastros/colaboradores.html"><i class="fa fa-circle-o"></i>Colaboradores</a></li>
-                            <li><a href="../../pages/cadastros/leis.html"><i class="fa fa-circle-o"></i>Leis</a></li>
-                            <li><a href="../../pages/cadastros/oportunidades.html"><i class="fa fa-circle-o"></i>Oportunidades</a></li>
+                            <li><a href="../../pages/cadastros/clientes.php"><i class="fa fa-circle-o"></i>Clientes</a></li>
+                            <li><a href="../../pages/cadastros/colaboradores.php"><i class="fa fa-circle-o"></i>Colaboradores</a></li>
+                            <li><a href="../../pages/cadastros/leis.php"><i class="fa fa-circle-o"></i>Leis</a></li>
+                            <li><a href="../../pages/cadastros/oportunidades.php"><i class="fa fa-circle-o"></i>Oportunidades</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -106,8 +106,8 @@
                 <h1>Cadastro de Colaboradores
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="../../index2.html"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="colaboradores.html">Colaboradores</a></li>
+                    <li><a href="../../index2.php"><i class="fa fa-dashboard"></i>Home</a></li>
+                    <li><a href="colaboradores.php">Colaboradores</a></li>
                 </ol>
             </section>
             <section class="content">
@@ -127,181 +127,181 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 1</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 1</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 1, bairro 1, cidade 1</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 2</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 2</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>5Rua 2, bairro 2, cidade 2</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 3</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 3</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>5Rua 3, bairro 3, cidade 3</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 3</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 3</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>6Rua 4, bairro 4, cidade 4</td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 4</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 4</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>7Rua 5, bairro 5, cidade 5</td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 5</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 5</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>6Rua 6, bairro 6, cidade 6</td>
                                         </tr>
                                         <tr>
                                             <td>7</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 6</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 6</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 7, bairro 7, cidade 7</td>
                                         </tr>
                                         <tr>
                                             <td>8</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 7</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 7</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 8, bairro 8, cidade 8</td>
                                         </tr>
                                         <tr>
                                             <td>9</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 9</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 9</a></td>
                                             <td>(99) 9999-99992+</td>
                                             <td>Rua 9, bairro 9, cidade 9</td>
                                         </tr>
                                         <tr>
                                             <td>10</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 10</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 10</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>1.9</td>
                                         </tr>
                                         <tr>
                                             <td>11</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 11</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 11</a></td>
                                             <td>(99) 9999-99992+</td>
                                             <td>Rua 10, bairro 10, cidade 10</td>
                                         </tr>
                                         <tr>
                                             <td>12</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 12</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 12</a></td>
                                             <td>(99) 9999-99993+</td>
                                             <td>Rua 11, bairro 11, cidade 11</td>
                                         </tr>
                                         <tr>
                                             <td>13</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 13</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 13</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 12, bairro 12, cidade 12</td>
                                         </tr>
                                         <tr>
                                             <td>14</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 14</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 14</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 13, bairro 13, cidade 13</td>
                                         </tr>
                                         <tr>
                                             <td>15</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 15</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 15</a></td>
                                             <td>(99) 9999-99992+</td>
                                             <td>Rua 14, bairro 14, cidade 14</td>
                                         </tr>
                                         <tr>
                                             <td>16</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 17</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 17</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>1</td>
                                         </tr>
                                         <tr>
                                             <td>17</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 16</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 16</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>1.1</td>
                                         </tr>
                                         <tr>
                                             <td>18</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 19</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 19</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>1.2</td>
                                         </tr>
                                         <tr>
                                             <td>19</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 20</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 20</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 15, bairro 15, cidade 15</td>
                                         </tr>
                                         <tr>
                                             <td>20</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 18</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 18</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 16, bairro 16, cidade 16</td>
                                         </tr>
                                         <tr>
                                             <td>21</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 21</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 21</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 17, bairro 17, cidade 17</td>
                                         </tr>
                                         <tr>
                                             <td>22</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 22</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 22</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 18, bairro 18, cidade 18</td>
                                         </tr>
                                         <tr>
                                             <td>23</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 23</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 23</a></td>
                                             <td>(99) 9999-99991+</td>
                                             <td>Rua 19, bairro 19, cidade 19</td>
                                         </tr>
                                         <tr>
                                             <td>24</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 24</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 24</a></td>
                                             <td>(99) 9999-99991+</td>
                                             <td>Rua 20, bairro 20, cidade 20</td>
                                         </tr>
                                         <tr>
                                             <td>25</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 25</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 25</a></td>
                                             <td>(99) 9999-99992+</td>
                                             <td>Rua 21, bairro 21, cidade 21</td>
                                         </tr>
                                         <tr>
                                             <td>26</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 26</td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 26</td>
                                             <td>Gnome</td>
                                             <td>Rua 22, bairro 22, cidade 22</td>
                                         </tr>
                                         <tr>
                                             <td>27</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 27</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 27</a></td>
                                             <td>(99) 9999-99993</td>
                                             <td>Rua 23, bairro 23, cidade 23</td>
                                         </tr>
                                         <tr>
                                             <td>28</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 28</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 28</a></td>
                                             <td>(99) 9999-99993</td>
                                             <td>Rua 24, bairro 24, cidade 24</td>
                                         </tr>
                                         <tr>
                                             <td>29</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 29</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 29</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 25, bairro 25, cidade 25<</td>
                                         </tr>
                                         <tr>
                                             <td>30</td>
-                                            <td><a href="cadastroColaboradores.html">Colaborador 30</a></td>
+                                            <td><a href="cadastroColaboradores.php">Colaborador 30</a></td>
                                             <td>(99) 9999-9999</td>
                                             <td>Rua 26, bairro 26, cidade 26<</td>
                                         </tr>

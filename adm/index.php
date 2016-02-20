@@ -31,11 +31,11 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="index2.html"><b>Corrida Maluca</b></a>
+            <a href="index2.php"><b>Corrida Maluca</b></a>
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">Faça login para começar a sua sessão</p>
-            <form action="index2.html" method="post">
+            <form action="default.php" method="post">
                 <div class="form-group has-feedback">
                     <input type="email" name="txtUsuario" class="form-control" placeholder="Usuário">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

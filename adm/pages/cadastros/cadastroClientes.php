@@ -42,7 +42,7 @@
     <div class="wrapper">
 
         <header class="main-header">
-            <a href="index2.html" class="logo">
+            <a href="index2.php" class="logo">
                 <span class="logo-mini"><b>CM</b></span>
                 <span class="logo-lg"><b>Corrida Maluca</b></span>
             </a>
@@ -100,10 +100,10 @@
                             <span class="label label-primary pull-right">4</span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../../pages/cadastros/clientes.html"><i class="fa fa-circle-o"></i>Clientes</a></li>
-                            <li><a href="../../pages/cadastros/colaboradores.html"><i class="fa fa-circle-o"></i>Colaboradores</a></li>
-                            <li><a href="../../pages/cadastros/leis.html"><i class="fa fa-circle-o"></i>Leis</a></li>
-                            <li><a href="../../pages/cadastros/oportunidades.html"><i class="fa fa-circle-o"></i>Oportunidades</a></li>
+                            <li><a href="../../pages/cadastros/clientes.php"><i class="fa fa-circle-o"></i>Clientes</a></li>
+                            <li><a href="../../pages/cadastros/colaboradores.php"><i class="fa fa-circle-o"></i>Colaboradores</a></li>
+                            <li><a href="../../pages/cadastros/leis.php"><i class="fa fa-circle-o"></i>Leis</a></li>
+                            <li><a href="../../pages/cadastros/oportunidades.php"><i class="fa fa-circle-o"></i>Oportunidades</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -114,9 +114,9 @@
                 <h1>Cadastro de Clientes
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="../../index2.html"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="../../pages/cadastros/clientes.html">Clientes</a></li>
-					<li><a href="../../pages/cadastros/cadastroClientes.html">Cadstro Clientes</a></li>
+                    <li><a href="../../index2.php"><i class="fa fa-dashboard"></i>Home</a></li>
+                    <li><a href="../../pages/cadastros/clientes.php">Clientes</a></li>
+					<li><a href="../../pages/cadastros/cadastroClientes.php">Cadstro Clientes</a></li>
                 </ol>
             </section>
             <section class="content">
