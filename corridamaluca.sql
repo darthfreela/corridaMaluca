@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 20-Fev-2016 às 18:39
+-- Generation Time: 20-Fev-2016 às 18:58
 -- Versão do servidor: 5.6.28
 -- PHP Version: 5.5.31
 
@@ -81,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `principal_clientes` (
   `nome` varchar(30) NOT NULL COMMENT 'nome do clietne',
   `telefone` varchar(15) NOT NULL COMMENT 'telefone',
   `bairro` varchar(20) NOT NULL,
-  `cidade` varchar(20) NOT NULL
+  `cidade` int(11) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
