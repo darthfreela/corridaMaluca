@@ -1101,7 +1101,7 @@ TableTools.prototype = {
 	"fnInfo": function ( message, time ) {
 		var info = $('<div/>')
 			.addClass( this.classes.print.info )
-			.php( message )
+			.html( message )
 			.appendTo( 'body' );
 
 		setTimeout( function() {
@@ -2271,7 +2271,7 @@ TableTools.prototype = {
 
 				if ( arr.length === 1 )
 				{
-					sLoopData = this._fnBoundData( $('td', arr[0].nTr).php(), oConfig.sFieldBoundary, regex );
+					sLoopData = this._fnBoundData( $('td', arr[0].nTr).html(), oConfig.sFieldBoundary, regex );
 					aData.push( sLoopData );
 				}
 			}
@@ -2463,7 +2463,7 @@ TableTools.prototype = {
 		{
 			$('<div/>')
 				.addClass( this.classes.print.message )
-				.php( oConfig.sMessage )
+				.html( oConfig.sMessage )
 				.prependTo( 'body' );
 		}
 
@@ -2978,7 +2978,7 @@ TableTools.BUTTONS = {
 	} ),
 
 	"ajax": $.extend( {}, TableTools.buttonBase, {
-		"sAjaxUrl": "/xhr.php",
+		"sAjaxUrl": "/xhr.html",
 		"sButtonText": "Ajax button",
 		"fnClick": function( nButton, oConfig ) {
 			var sData = this.fnGetTableData(oConfig);

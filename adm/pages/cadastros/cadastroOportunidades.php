@@ -1,20 +1,48 @@
-<?php
-	include("../../funcoes/conexao.php");
+<?php 
+include("../../funcoes/conexao.php");
+
+if(isset($_POST["txtNome"])){
+	
+    $nome = $oportunidades["txtNome"];
+	$descricao = $oportunidades["txtDescricao"];
+	$tipo =$oportunidades["cbTipo"];
+	$dtaInicio = $oportunidades["dtaInicio"];
+	$dtaFim = $oportunidades["dtaFim"];
+	$localOportunidade = $oportunidades["txtLocal"];	    
+	
+	if( ($nome == "") || ($descricao == "") || ($tipo == "") || ($dtaInicio == "")|| ($dtaFim == "")|| ($localOportunidade == "")){
+        echo "Preencha as informações corretamente.";
+        exit;
+    } else {
+		if($GET["id"] != null){
+			$SQL = "UPDATE principal_oportunidades SET nome = '".$nome."', descricao = '".$descricao. "', tipo_oportunidades = '".$tipo.  "', local_oportunidade = '".$localOportunidade. "', dta_inicio = ".$dtaInicio. ", dta_fim = ".$dtaFim. "WHERE oportunidade_id = ".$GET["id"];
+		}else{
+			$SQL = "INSERT INTO principal_oportunidades VALUES('".$nome."', '".$descricao. "','".$tipo."', '".$localOportunidade."', ".$dtaInicio. ", ".$dtaFim.")";
+		}
+        
+        $query = mysql_query($SQL);
+        if(mysql_affected_rows($conn) > 0){
+            echo "<script>alert('Oportunidade atualizada/inserida com sucesso.');</script>";
+            echo "<script>window.location = 'oportunidades.php';</script>";
+        } else {
+            echo "<script>alert('Erro ao atualizar/inserir o Oportunidade.');</script>";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="Content-Language" content="pt-br">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Corrida Maluca -> Clientes</title>
+    <title>Corrida Maluca --> Cadastro de Oportunidades</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../dist/css/.min.css">
     <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -26,10 +54,16 @@
     <script src="../../dist/js/demo.js"></script>
     <script>
         $(function () {
-           $("#tabela1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
         });
-        
-	
+
     </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
@@ -109,70 +143,89 @@
         </aside>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>Cadastro de Clientes
+                <h1>Cadastro de Oportunidades
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../../default.php"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="clientes.php">Clientes</a></li>
+                    <li><a href="../../pages/cadastros/oportunidades.php">Oportunidades</a></li>
+					<li><a href="../../pages/cadastros/cadastroOportunidades.php">Cadstro Oportunidades</a></li>
                 </ol>
             </section>
             <section class="content">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-body">
-								<form action="cadastroClientes.php">
-									<button type="submit" class="btn btn-success">Novo</button>
-								</form>
-                                <table id="tabela1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 7%;">Codigo</th>
-                                            <th style="width: 50%;">Nome</th>
-                                            <th style="width: 10%;">Telefone</th>
-                                            <th style="width: 33%;">Endereço</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-										<?php 
-											$mysql = new conexao;
-											$lista = $mysql->sql_query("SELECT cli.clientes_id AS id, 
-																			cli.nome AS nome,
-																			cli.telefone AS telefone,
-																			cli.bairro AS bairro,
-																			cid.nome AS nomeCidade,
-																			est.nome AS nomeEstado
-																		FROM principal_clientes AS cli 
-																			INNER JOIN estados AS est ON cli.estado = est.idEstado
-																			INNER JOIN cidade AS cid ON cli.cidade = cid.idCidade
-																		ORDER BY cli.clientes_id ASC");
-											while($clientes = mysql_fetch_object($lista)){
-										?>
-										<tr>
-											<td>
-												<?php echo $clientes["id"];?>
-											</td>
-											<td>
-												<a href="cadastroClientes.php?id=<?php echo $clientes["id"];?>">
-													<?php echo $clientes["nome"];?>
-												</a>
-											</td>
-											<td>
-												<?php echo $clientes->["telefone"];?>
-											</td>
-											<td>
-												<?php echo $clientes["bairro"];?>, &nbsp;
-												<?php echo $clientes["nomeCidade"];?>, &nbsp;
-												<?php echo $clientes["nomeEstado"];?>
-											</td>
-                                        </tr>
-										<?php 
-											}
-											$mysql->desconecta;
-										?>
-                                    </tbody>
-                                </table>
+                    <div class="col-md-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Cadastro de Oportunidades</h3>
                             </div>
+							<?php
+								if(isset($GET["id"])){
+									if(is_numeric($GET["id"])){
+										$mysql = new conexao;
+										$lista = "SELECT opor.oportunidade_id AS id,
+														 opor.nome AS nome,
+														 opor.descricao AS descricao,
+														 opor.tipo_oportunidades AS tipo,
+														 opor.local_oportunidade AS local, 
+														 opor.dta_inicio AS dtaInicio,
+														 opor.dta_fim AS dtaFim
+												FROM principal_oportunidades AS opor
+												WHERE opor.oportunidade_id = ".$GET["id"];
+										
+										while($oportunidades = mysql_fetch_object($lista)){
+											$nome = $oportunidades["nome"];
+											$descricao = $oportunidades["descricao"];
+											$tipo =$oportunidades["tipo"];
+											$dtaInicio = $oportunidades["dtaInicio"];
+											$dtaFim = $oportunidades["dtaFim"];
+											$localOportunidade = $oportunidades["local"];
+										}	
+									}
+								}else{
+									$nome ="";
+									$descricao = "";
+									$tipo ="";
+									$dtaInicio = "";
+									$dtaFim = "";
+									$localOportunidade = "";
+								}
+								?>
+							<form role="form">
+								<div class="box-body">
+									<div class="form-group col-md-5">
+										<label for="txtNome">Nome</label>
+										<input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Nome" value="<?php echo $nome;?>" required/>
+									</div>
+									<div class="form-group col-md-5">
+										<label for="txtLocal">Local</label>
+										<input type="text" class="form-control" id="txtLocal" name="txtLocal" placeholder="Local" value="<?php echo $localOportunidade;?>" required/>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="dtaInicio">Data Início</label>
+										<input type="date" class="form-control" id="dtaInicio" name="dtaInicio" value="<?php echo $dtaInicio;?>" required/>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="dtaFim">Data Fim</label>
+										<input type="date" class="form-control" id="dtaFim" name="dtaFim" value="<?php echo $dtaFim;?>" required/>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="cbTipo">Tipo Oportunidade</label>
+										<select class="form-control" class="form-control" id="cbTipo" name="cbTipo" placeholder="Tipo Oportunidade" required>
+											<option value="Vaga">Vaga</option>
+											<option value="Curso">Curso</option>
+										</select>	
+									</div>
+									<div class="form-group col-md-4">
+										<label for="txtDescricao">Descrição</label>
+										<textarea class="form-control" cols=60 id="txtDescricao" rows="10" name="txtDescricao" maxlength="500" wrap="hard" placeholder="Descrição Oportunidades" value="<?php echo $descricao;?>" required/>
+									</div>
+									
+								</div>
+								<div class="box-footer">
+									<button type="submit" class="btn btn-primary">Salvar</button>
+									<button type="reset" class="btn btn-danger ">Limpar</button>
+								</div>
+							</form>
                         </div>
                     </div>
                 </div>

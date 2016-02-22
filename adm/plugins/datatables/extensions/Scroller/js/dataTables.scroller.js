@@ -998,7 +998,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 		{
 			for ( var i=0, iLen=n.length ; i<iLen ; i++ )
 			{
-				$(n[i]).php( sOut );
+				$(n[i]).html( sOut );
 			}
 		}
 	}

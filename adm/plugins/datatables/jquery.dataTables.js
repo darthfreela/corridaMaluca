@@ -1805,8 +1805,8 @@
 				}
 			}
 	
-			if ( column.sTitle != cell.php() ) {
-				cell.php( column.sTitle );
+			if ( column.sTitle != cell.html() ) {
+				cell.html( column.sTitle );
 			}
 	
 			_fnRenderer( oSettings, 'header' )(
@@ -2064,7 +2064,7 @@
 					'valign':  'top',
 					'colSpan': _fnVisbleColumns( oSettings ),
 					'class':   oSettings.oClasses.sRowEmpty
-				} ).php( sZero ) )[0];
+				} ).html( sZero ) )[0];
 		}
 	
 		/* Header and footer callbacks */
@@ -3229,7 +3229,7 @@
 			);
 		}
 	
-		$(nodes).php( out );
+		$(nodes).html( out );
 	}
 	
 	
@@ -3574,7 +3574,7 @@
 				'id': ! settings.aanFeatures.r ? settings.sTableId+'_processing' : null,
 				'class': settings.oClasses.sProcessing
 			} )
-			.php( settings.oLanguage.sProcessing )
+			.html( settings.oLanguage.sProcessing )
 			.insertBefore( settings.nTable )[0];
 	}
 	
@@ -4370,7 +4370,7 @@
 	
 		var data = settings.aoData[ idx ];
 		return ! data.nTr ? // Might not have been created when deferred rendering
-			$('<td/>').php( _fnGetCellData( settings, idx, colIdx, 'display' ) )[0] :
+			$('<td/>').html( _fnGetCellData( settings, idx, colIdx, 'display' ) )[0] :
 			data.anCells[ colIdx ];
 	}
 	
@@ -7940,7 +7940,7 @@
 				var created = $('<tr><td/></tr>').addClass( k );
 				$('td', created)
 					.addClass( k )
-					.php( r )
+					.html( r )
 					[0].colSpan = _fnVisbleColumns( ctx );
 	
 				rows.push( created[0] );
@@ -10208,7 +10208,7 @@
 		 *    $(document).ready( function () {
 		 *      $('#example').dataTable( {
 		 *        "serverSide": true,
-		 *        "ajax": "xhr.php"
+		 *        "ajax": "xhr.html"
 		 *      } );
 		 *    } );
 		 */
@@ -10340,7 +10340,7 @@
 		 *          // Bold the grade for all 'A' grade browsers
 		 *          if ( data[4] == "A" )
 		 *          {
-		 *            $('td:eq(4)', row).php( '<b>A</b>' );
+		 *            $('td:eq(4)', row).html( '<b>A</b>' );
 		 *          }
 		 *        }
 		 *      } );
@@ -10563,7 +10563,7 @@
 		 *        "rowCallback": function( row, data, displayIndex, displayIndexFull ) {
 		 *          // Bold the grade for all 'A' grade browsers
 		 *          if ( data[4] == "A" ) {
-		 *            $('td:eq(4)', row).php( '<b>A</b>' );
+		 *            $('td:eq(4)', row).html( '<b>A</b>' );
 		 *          }
 		 *        }
 		 *      } );
@@ -10842,7 +10842,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "serverSide": true,
-		 *        "ajax": "scripts/server_processing.php",
+		 *        "ajax": "scripts/server_processing.html",
 		 *        "deferLoading": 57
 		 *      } );
 		 *    } );
@@ -10852,7 +10852,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "serverSide": true,
-		 *        "ajax": "scripts/server_processing.php",
+		 *        "ajax": "scripts/server_processing.html",
 		 *        "deferLoading": [ 57, 100 ],
 		 *        "search": {
 		 *          "search": "my_filter"
@@ -14272,7 +14272,7 @@
 											settings.sTableId +'_'+ button :
 											null
 									} )
-									.php( btnDisplay )
+									.html( btnDisplay )
 									.appendTo( container );
 	
 								_fnBindAction(
@@ -14453,7 +14453,7 @@
 	
 				// For HTML types add a search formatter that will strip the HTML
 				if ( key.match(/^html\-/) ) {
-					_ext.type.search[ key+decimalPlace ] = _ext.type.search.php;
+					_ext.type.search[ key+decimalPlace ] = _ext.type.search.html;
 				}
 			}
 		);
@@ -14893,7 +14893,7 @@
 	 *  @example
 	 *     // Use a custom property returned from the server in another DOM element
 	 *     $('#table').dataTable().on('xhr.dt', function (e, settings, json) {
-	 *       $('#status').php( json.status );
+	 *       $('#status').html( json.status );
 	 *     } );
 	 *
 	 *  @example

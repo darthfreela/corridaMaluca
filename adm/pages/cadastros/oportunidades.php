@@ -8,7 +8,7 @@
     <meta charset="utf-8">
 	<meta http-equiv="Content-Language" content="pt-br">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Corrida Maluca -> Clientes</title>
+    <title>Corrida Maluca -> Oportunidades</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -28,8 +28,6 @@
         $(function () {
            $("#tabela1").DataTable();
         });
-        
-	
     </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
@@ -109,11 +107,11 @@
         </aside>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>Cadastro de Clientes
+                <h1>Cadastro de Oportunidades
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../../default.php"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="clientes.php">Clientes</a></li>
+                    <li><a href="oportunidades.php">Oportunidades</a></li>
                 </ol>
             </section>
             <section class="content">
@@ -121,53 +119,48 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-body">
-								<form action="cadastroClientes.php">
+								<form action="cadastroOportunidades.php">
 									<button type="submit" class="btn btn-success">Novo</button>
 								</form>
                                 <table id="tabela1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width: 7%;">Codigo</th>
                                             <th style="width: 50%;">Nome</th>
-                                            <th style="width: 10%;">Telefone</th>
-                                            <th style="width: 33%;">Endereço</th>
+                                            <th style="width: 10%;">Tipo</th>
+                                            <th style="width: 16%;">Data Inicio</th>
+											<th style="width: 16%;">Data Fim</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 										<?php 
 											$mysql = new conexao;
-											$lista = $mysql->sql_query("SELECT cli.clientes_id AS id, 
-																			cli.nome AS nome,
-																			cli.telefone AS telefone,
-																			cli.bairro AS bairro,
-																			cid.nome AS nomeCidade,
-																			est.nome AS nomeEstado
-																		FROM principal_clientes AS cli 
-																			INNER JOIN estados AS est ON cli.estado = est.idEstado
-																			INNER JOIN cidade AS cid ON cli.cidade = cid.idCidade
-																		ORDER BY cli.clientes_id ASC");
-											while($clientes = mysql_fetch_object($lista)){
+											$lista = $mysql->sql_query("SELECT opor.principal_oportunidades AS id, 
+																			opor.nome AS nome,
+																			opor.tipo_oportunidades AS tipo,
+																			opor.dta_inicio AS dtaInicio,
+																			opor.dta_fim AS dtaFim,
+																		FROM principal_oportunidades AS opor
+																		ORDER BY opor.nome ASC");
+											while($oportunidades = mysql_fetch_object($lista)){
 										?>
-										<tr>
-											<td>
-												<?php echo $clientes["id"];?>
-											</td>
-											<td>
-												<a href="cadastroClientes.php?id=<?php echo $clientes["id"];?>">
-													<?php echo $clientes["nome"];?>
-												</a>
-											</td>
-											<td>
-												<?php echo $clientes->["telefone"];?>
-											</td>
-											<td>
-												<?php echo $clientes["bairro"];?>, &nbsp;
-												<?php echo $clientes["nomeCidade"];?>, &nbsp;
-												<?php echo $clientes["nomeEstado"];?>
-											</td>
-                                        </tr>
+											<tr>
+												<td>
+													<a href="cadastroOportunidades.php?id=<?php echo $oportunidades["id"];?>">
+														<?php echo $oportunidades["nome"];?>
+													</a>
+												</td>
+												<td>
+													<?php echo $oportunidades["tipo"];?>
+												</td>
+												<td>
+													<?php echo $oportunidades["dtaInicio"];?>
+												</td>
+												<td>
+													<?php echo $oportunidades["dtaFim"];?>
+												</td>
+											</tr>
 										<?php 
-											}
+											}											
 											$mysql->desconecta;
 										?>
                                     </tbody>

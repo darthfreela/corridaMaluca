@@ -1,14 +1,47 @@
-<?php
-	include("../../funcoes/conexao.php");
+<?php 
+include("../../funcoes/conexao.php");
+
+if(isset($_POST["txtNome"])){
+	
+    $nome = $_POST["txtNome"];
+    $pergunta = $_POST["txtPergunta"];
+    
+	if( ($nome == "") || ($pergunta == "")){
+        echo "Preencha as informações corretamente.";
+        exit;
+    } else {
+		if($GET["id"] != null){
+			if($GET[variavel] == "SIM"){
+				$SQL = "UPDATE posvenda_perguntasvariaveis SET nome = '".$nome."', pergunta = '".$pergunta. "WHERE perguntasvariaveis_id = ".$GET["id"];
+			}else{
+				$SQL = "UPDATE posvenda_perguntasfixas SET nome = '".$nome."', pergunta = '".$pergunta. "WHERE perguntasfixas_id = ".$GET["id"];
+			}
+		}else{
+			if($GET[variavel] == "SIM"){
+				$SQL = "INSERT INTO posvenda_perguntasvariaveis VALUES('".$nome."', '".$pergunta.")";
+			}else{
+				$SQL = "INSERT INTO posvenda_perguntasfixas VALUES('".$nome."', '".$pergunta.")";
+			}
+			
+		}
+        
+        $query = mysql_query($SQL);
+        if(mysql_affected_rows($conn) > 0){
+            echo "<script>alert('Pergunta atualizada/inserida com sucesso.');</script>";
+            echo "<script>window.location = 'perguntas.php';</script>";
+        } else {
+            echo "<script>alert('Erro ao atualizar/inserir o Pergunta.');</script>";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="Content-Language" content="pt-br">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Corrida Maluca -> Clientes</title>
+    <title>Corrida Maluca --> Cadastro de Perguntas</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -26,10 +59,17 @@
     <script src="../../dist/js/demo.js"></script>
     <script>
         $(function () {
-           $("#tabela1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
         });
-        
-	
+		$("#txtTelefone").mask("(99) 9999-9999");
+
     </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
@@ -109,70 +149,74 @@
         </aside>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>Cadastro de Clientes
+                <h1>Cadastro de Perguntas
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../../default.php"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="clientes.php">Clientes</a></li>
+                    <li><a href="../../pages/cadastros/perguntas.php">Perguntas</a></li>
+					<li><a href="../../pages/cadastros/cadastroPerguntas.php">Cadstro Perguntas</a></li>
                 </ol>
             </section>
             <section class="content">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-body">
-								<form action="cadastroClientes.php">
-									<button type="submit" class="btn btn-success">Novo</button>
-								</form>
-                                <table id="tabela1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 7%;">Codigo</th>
-                                            <th style="width: 50%;">Nome</th>
-                                            <th style="width: 10%;">Telefone</th>
-                                            <th style="width: 33%;">Endereço</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-										<?php 
-											$mysql = new conexao;
-											$lista = $mysql->sql_query("SELECT cli.clientes_id AS id, 
-																			cli.nome AS nome,
-																			cli.telefone AS telefone,
-																			cli.bairro AS bairro,
-																			cid.nome AS nomeCidade,
-																			est.nome AS nomeEstado
-																		FROM principal_clientes AS cli 
-																			INNER JOIN estados AS est ON cli.estado = est.idEstado
-																			INNER JOIN cidade AS cid ON cli.cidade = cid.idCidade
-																		ORDER BY cli.clientes_id ASC");
-											while($clientes = mysql_fetch_object($lista)){
-										?>
-										<tr>
-											<td>
-												<?php echo $clientes["id"];?>
-											</td>
-											<td>
-												<a href="cadastroClientes.php?id=<?php echo $clientes["id"];?>">
-													<?php echo $clientes["nome"];?>
-												</a>
-											</td>
-											<td>
-												<?php echo $clientes->["telefone"];?>
-											</td>
-											<td>
-												<?php echo $clientes["bairro"];?>, &nbsp;
-												<?php echo $clientes["nomeCidade"];?>, &nbsp;
-												<?php echo $clientes["nomeEstado"];?>
-											</td>
-                                        </tr>
-										<?php 
-											}
-											$mysql->desconecta;
-										?>
-                                    </tbody>
-                                </table>
+                    <div class="col-md-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Cadastro de Perguntas</h3>
                             </div>
+							<?php
+								if(isset($GET["id"])){
+									if(is_numeric($GET["id"])){
+										$mysql = new conexao;
+										if($GET["variavel"] =="SIM"){											
+											$lista = "SELECT posPerg.perguntasvariaveis_id AS id, 
+																posPerg.nome AS nome,
+																posPerg.pergunta AS pergunta,
+															FROM posvenda_perguntasvariaveis AS posPerg 
+															WHERE posPerg.perguntasvariaveis_id = ".$GET["id"];
+										}else{
+											$lista = "SELECT posPergFix.perguntasfixas_id AS id, 
+																posPergFix.nome AS nome,
+																posPergFix.pergunta AS pergunta,
+															FROM posvenda_perguntasfixas AS posPergFix
+															WHERE posPergFix.perguntasfixas_id = ".$GET["id"];
+										}
+										while($perguntas = mysql_fetch_object($lista)){
+											$nome = $perguntas["nome"];
+											$perguntasPreenchidas = $perguntas["pergunta"];
+										}	
+									}
+								}else{
+									$nome = "";
+									$perguntasPreenchidas = "";
+								}
+								function is_checked(){
+									if($GET["variavel"] =="SIM"){
+										echo 'checked="checked"';
+									} 
+								}
+							?>
+							<form role="form">
+								<div class="box-body">
+									<div class="form-group col-md-5">
+										<label for="txtNome">Nome</label>
+										<input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Nome" required value="<?php echo $nome;?>">
+									</div>
+									<div class="form-group col-md-3">
+										<label for="txtTelefone">Pergunta</label>
+										<input type="text" class="form-control" id="txtPergunta" name="txtPergunta" placeholder="Pergunta" required value="<?php echo $perguntasPreenchidas;?>">
+									</div>
+									<div class="form-group col-md-4">
+										<label for="txtBairro">Variável</label>
+										<input type="checkbox" value="Sim" name="var[]" <?php is_checked(); ?>/>
+									</div>
+									
+								</div>
+								<div class="box-footer">
+									<button type="submit" class="btn btn-primary">Salvar</button>
+									<button type="reset" class="btn btn-danger ">Limpar</button>
+								</div>
+							</form>
                         </div>
                     </div>
                 </div>

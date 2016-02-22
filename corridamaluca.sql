@@ -99,6 +99,46 @@ CREATE TABLE IF NOT EXISTS `principal_usuarios` (
   `data_admissao` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `principal_oportunidades`
+--
+
+CREATE TABLE IF NOT EXISTS `principal_oportunidades` (
+  `oportunidade_id` int(11) NOT NULL,
+  `nome` varchar(80) NOT NULL,
+  `descricao` varchar(1000) DEFAULT NULL,
+  `tipo_oportunidades` enum('Vaga', 'Curso') NOT NULL,
+  `local_oportunidade` varchar(255) NOT NULL ,
+  `dta_inicio` date NOT NULL, 
+  `dta_fim` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `principal_requisitos`
+--
+
+CREATE TABLE IF NOT EXISTS `principal_requisitos` (
+  `requisitos_id` int(11) NOT NULL,
+  `nome` varchar(80) NOT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `principal_oportunidades_requisitos
+--
+
+CREATE TABLE IF NOT EXISTS `principal_oportunidades_requisitos` (
+  `usuarios_id` int(11) NOT NULL,
+  `oportunidade_id` int(11) NOT NULL,
+  `requisitos_id` int(11) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Indexes for dumped tables
 --

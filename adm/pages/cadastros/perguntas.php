@@ -8,7 +8,7 @@
     <meta charset="utf-8">
 	<meta http-equiv="Content-Language" content="pt-br">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Corrida Maluca -> Clientes</title>
+    <title>Corrida Maluca -> Perguntas</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -28,8 +28,6 @@
         $(function () {
            $("#tabela1").DataTable();
         });
-        
-	
     </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
@@ -109,11 +107,11 @@
         </aside>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>Cadastro de Clientes
+                <h1>Cadastro de Perguntas
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../../default.php"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="clientes.php">Clientes</a></li>
+                    <li><a href="perguntas.php">Perguntas</a></li>
                 </ol>
             </section>
             <section class="content">
@@ -121,51 +119,62 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-body">
-								<form action="cadastroClientes.php">
+								<form action="cadastroPerguntas.php">
 									<button type="submit" class="btn btn-success">Novo</button>
 								</form>
                                 <table id="tabela1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width: 7%;">Codigo</th>
                                             <th style="width: 50%;">Nome</th>
-                                            <th style="width: 10%;">Telefone</th>
-                                            <th style="width: 33%;">Endereço</th>
+                                            <th style="width: 10%;">Pergunta</th>
+                                            <th style="width: 33%;">Variável</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 										<?php 
 											$mysql = new conexao;
-											$lista = $mysql->sql_query("SELECT cli.clientes_id AS id, 
-																			cli.nome AS nome,
-																			cli.telefone AS telefone,
-																			cli.bairro AS bairro,
-																			cid.nome AS nomeCidade,
-																			est.nome AS nomeEstado
-																		FROM principal_clientes AS cli 
-																			INNER JOIN estados AS est ON cli.estado = est.idEstado
-																			INNER JOIN cidade AS cid ON cli.cidade = cid.idCidade
-																		ORDER BY cli.clientes_id ASC");
-											while($clientes = mysql_fetch_object($lista)){
+											$lista = $mysql->sql_query("SELECT posPerg.perguntasvariaveis_id AS id, 
+																			posPerg.nome AS nome,
+																			posPerg.pergunta AS pergunta,
+																		FROM posvenda_perguntasvariaveis AS posPerg
+																		ORDER BY posPerg.nome ASC");
+											while($perguntas = mysql_fetch_object($lista)){
 										?>
-										<tr>
-											<td>
-												<?php echo $clientes["id"];?>
-											</td>
-											<td>
-												<a href="cadastroClientes.php?id=<?php echo $clientes["id"];?>">
-													<?php echo $clientes["nome"];?>
-												</a>
-											</td>
-											<td>
-												<?php echo $clientes->["telefone"];?>
-											</td>
-											<td>
-												<?php echo $clientes["bairro"];?>, &nbsp;
-												<?php echo $clientes["nomeCidade"];?>, &nbsp;
-												<?php echo $clientes["nomeEstado"];?>
-											</td>
-                                        </tr>
+											<tr>
+												<td>
+													<a href="cadastroPerguntas.php?id=<?php echo $perguntas["id"];?>&variavel=SIM">
+														<?php echo $perguntas["nome"];?>
+													</a>
+												</td>
+												<td>
+													<?php echo $perguntas["pergunta"];?>
+												</td>
+												<td>
+													SIM
+												</td>
+											</tr>
+										<?php 
+											}
+											$lista = $mysql->sql_query("SELECT posPergFix.perguntasfixas_id AS id, 
+																			posPergFix.nome AS nome,
+																			posPergFix.pergunta AS pergunta,
+																		FROM posvenda_perguntasfixas AS posPergFix
+																		ORDER BY posPergFix.nome ASC");
+											while($perguntas = mysql_fetch_object($lista)){
+										?>
+											<tr>
+												<td>
+													<a href="cadastroPerguntas.php?id=<?php echo $perguntas["id"];?>&variavel=NAO">
+														<?php echo $perguntas["nome"];?>
+													</a>
+												</td>
+												<td>
+													<?php echo $perguntas["pergunta"];?>
+												</td>
+												<td>
+													NÃO
+												</td>
+											</tr>
 										<?php 
 											}
 											$mysql->desconecta;

@@ -31,7 +31,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="index2.php"><b>Corrida Maluca</b></a>
+            <a href="default.php"><b>Corrida Maluca</b></a>
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">Faça login para começar a sua sessão</p>

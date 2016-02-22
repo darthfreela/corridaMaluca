@@ -31,7 +31,7 @@
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
       <header class="main-header">
-        <a href="index2.php" class="logo">
+        <a href="default.php" class="logo">
           <span class="logo-mini"><b>CM</b></span>
           <span class="logo-lg"><b>Corrida Maluca</b></span>
         </a>
@@ -91,7 +91,7 @@
               <ul class="treeview-menu">
                 <li><a href="pages/cadastros/clientes.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
                 <li><a href="pages/cadastros/colaboradores.php"><i class="fa fa-circle-o"></i> Colaboradores</a></li>
-                <li><a href="pages/cadastros/leis.php"><i class="fa fa-circle-o"></i> Leis</a></li>
+                <li><a href="pages/cadastros/perguntas.php"><i class="fa fa-circle-o"></i> Perguntas</a></li>
                 <li><a href="pages/cadastros/oportunidades.php"><i class="fa fa-circle-o"></i> Oportunidades</a></li>
               </ul>
             </li>

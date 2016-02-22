@@ -5643,7 +5643,7 @@ INSERT INTO `estados` (`idEstado`, `nome`, `uf`) VALUES
 (27, 'Tocantins', 'TO');
 
 
-CREATE TABLE `leis` (
+CREATE TABLE `Perguntas` (
   `idLei` int(20) NOT NULL,
   `perguntaLei` varchar(1000) NOT NULL,
   `idsRespostas` varchar(100) NOT NULL,
@@ -5674,12 +5674,12 @@ CREATE TABLE `perfils` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-CREATE TABLE `respostasleis` (
+CREATE TABLE `respostasPerguntas` (
   `idRespostaLei` int(20) NOT NULL,
   `idLei` int(20) NOT NULL,
   `respostaLei` varchar(80) NOT NULL,
   PRIMARY KEY (`idRespostaLei`),
-  KEY `FK_Respostas_Leis` (`idLei`)
+  KEY `FK_Respostas_Perguntas` (`idLei`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE `cidades`
@@ -5695,6 +5695,6 @@ ALTER TABLE `colaboradores`
   ADD CONSTRAINT `FK_Colaboradores_Cidades` FOREIGN KEY (`idCidade`) REFERENCES `cidades` (`idCidade`),
   ADD CONSTRAINT `FK_Colaboradores_Perfils` FOREIGN KEY (`idPerfil`) REFERENCES `perfils` (`idPerfil`);
 
-ALTER TABLE `respostasleis`
-  ADD CONSTRAINT `FK_Respostas_Leis` FOREIGN KEY (`idLei`) REFERENCES `leis` (`idLei`);
+ALTER TABLE `respostasPerguntas`
+  ADD CONSTRAINT `FK_Respostas_Perguntas` FOREIGN KEY (`idLei`) REFERENCES `Perguntas` (`idLei`);
 

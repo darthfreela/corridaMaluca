@@ -666,14 +666,14 @@ Licensed under the BSD-2-Clause License.
       if (!html) {
         return this.hide();
       } else {
-        this.php(html);
+        this.html(html);
         this.show();
         return this.moveTo(x, y);
       }
     };
 
-    Hover.prototype.php = function(content) {
-      return this.el.php(content);
+    Hover.prototype.html = function(content) {
+      return this.el.html(content);
     };
 
     Hover.prototype.moveTo = function(x, y) {
