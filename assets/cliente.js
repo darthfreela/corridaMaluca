@@ -13,6 +13,10 @@ $(document).ready(function(){
 		if(tecla == 13 && count > 10){
 			/*efeito div decendo*/
 			$('.divCai').slideDown();
+
+			//redirecionando
+	var novaURL = "http://www.codigofonte.com.br/";
+	$(window.document.location).attr('href',novaURL);
 		}
 		if(tecla == 08){
 			count--;
