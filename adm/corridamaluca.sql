@@ -10,12 +10,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `corridamaluca`
 --
@@ -124,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `principal_oportunidades` (
 CREATE TABLE IF NOT EXISTS `principal_requisitos` (
   `requisitos_id` int(11) NOT NULL,
   `nome` varchar(80) NOT NULL,
-  `descricao` varchar(100) DEFAULT NULL,
+  `descricao` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -137,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `principal_requisitos` (
 CREATE TABLE IF NOT EXISTS `principal_oportunidades_requisitos` (
   `usuarios_id` int(11) NOT NULL,
   `oportunidade_id` int(11) NOT NULL,
-  `requisitos_id` int(11) NOT NULL,
+  `requisitos_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Indexes for dumped tables
@@ -248,6 +242,3 @@ ALTER TABLE `posvenda_perguntasfixas`
 ALTER TABLE `principal_clientes`
   ADD CONSTRAINT `principal_clientes_ibfk_1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes_perguntas` (`clientes_id`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
