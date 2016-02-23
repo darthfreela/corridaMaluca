@@ -119,7 +119,7 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-body">
-								<form action="cadastroColabores.php">
+								<form action="cadastroColaboradores.php">
 									<button type="submit" class="btn btn-success">Novo</button>
 								</form>
                                 <table id="tabela1" class="table table-bordered table-striped">
@@ -138,9 +138,9 @@
 																			usua.nome AS nome,
 																			usua.telefone AS telefone,
 																			usua.perfil AS perfil,
-																			usua.data_admissao AS admissao,
+																			usua.data_admissao AS admissao
 																		FROM principal_usuarios AS usua
-																		ORDER BY cli.usuarios_id ASC");
+																		ORDER BY usua.usuarios_id ASC");
 											while($usuarios = mysql_fetch_object($lista)){
 										?>
 											<tr>

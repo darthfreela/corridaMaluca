@@ -144,7 +144,7 @@
 																			est.nome AS nomeEstado
 																		FROM principal_clientes AS cli 
 																			INNER JOIN estados AS est ON cli.estado = est.idEstado
-																			INNER JOIN cidade AS cid ON cli.cidade = cid.idCidade
+																			INNER JOIN cidades AS cid ON cli.cidade = cid.idCidade
 																		ORDER BY cli.clientes_id ASC");
 											while($clientes = mysql_fetch_object($lista)){
 										?>
@@ -158,7 +158,7 @@
 												</a>
 											</td>
 											<td>
-												<?php echo $clientes->["telefone"];?>
+												<?php echo $clientes["telefone"];?>
 											</td>
 											<td>
 												<?php echo $clientes["bairro"];?>, &nbsp;

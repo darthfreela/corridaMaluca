@@ -5575,36 +5575,6 @@ INSERT INTO `cidades` (`idCidade`, `nome`, `idEstado`) VALUES
 (5563, 'Wanderlândia', 27),
 (5564, 'Xambioá', 27);
 
-CREATE TABLE `clientes` (
-  `idCliente` int(20) NOT NULL,
-  `nomeCliente` varchar(80) NOT NULL,
-  `emailCliente` varchar(255) NOT NULL,
-  `telefoneCliente` varchar(15) NOT NULL,
-  `cepCliente` varchar(9) NOT NULL,
-  `lagradouroCliente` varchar(255) NOT NULL,
-  `idEstado` int(11) NOT NULL,
-  `idCidade` int(11) NOT NULL,
-  PRIMARY KEY (`idCliente`),
-  KEY `FK_Clientes_Cidades` (`idEstado`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `colaboradores` (
-  `idColaborador` int(20) NOT NULL,
-  `nomeColaborador` varchar(80) NOT NULL,
-  `emailColaborador` varchar(255) NOT NULL,
-  `telefoneColaborador` varchar(15) NOT NULL,
-  `cepColaborador` varchar(9) NOT NULL,
-  `lagradouroColaborador` varchar(255) NOT NULL,
-  `idPerfil` int(20) NOT NULL,
-  `idEstado` int(11) NOT NULL,
-  `idCidade` int(11) NOT NULL,
-  PRIMARY KEY (`idColaborador`),
-  KEY `FK_Colaboradores_Estados` (`idEstado`),
-  KEY `FK_Colaboradores_Cidades` (`idCidade`),
-  KEY `FK_Colaboradores_Perfils` (`idPerfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 CREATE TABLE `estados` (
   `idEstado` int(11) NOT NULL,
   `nome` varchar(75) DEFAULT NULL,
@@ -5643,58 +5613,6 @@ INSERT INTO `estados` (`idEstado`, `nome`, `uf`) VALUES
 (27, 'Tocantins', 'TO');
 
 
-CREATE TABLE `Perguntas` (
-  `idLei` int(20) NOT NULL,
-  `perguntaLei` varchar(1000) NOT NULL,
-  `idsRespostas` varchar(100) NOT NULL,
-  PRIMARY KEY (`idLei`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `musicas` (
-  `idMusica` int(20) NOT NULL,
-  `idColaborador` int(20) NOT NULL,
-  `nomeMusica` varchar(80) NOT NULL,
-  PRIMARY KEY (`idMusica`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `oportunidades` (
-  `idOportunidades` int(20) NOT NULL,
-  `nomeOportunidades` varchar(80) NOT NULL,
-  `idsRequisitos` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idOportunidades`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `perfils` (
-  `idPerfil` int(20) NOT NULL,
-  `nomePerfil` varchar(80) NOT NULL,
-  PRIMARY KEY (`idPerfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `respostasPerguntas` (
-  `idRespostaLei` int(20) NOT NULL,
-  `idLei` int(20) NOT NULL,
-  `respostaLei` varchar(80) NOT NULL,
-  PRIMARY KEY (`idRespostaLei`),
-  KEY `FK_Respostas_Perguntas` (`idLei`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 ALTER TABLE `cidades`
   ADD CONSTRAINT `FK_Cidades_estados` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`idEstado`);
-
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `FK_Clientes_Estados` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`idEstado`),
-  ADD CONSTRAINT `FK_Clientes_Cidades` FOREIGN KEY (`idEstado`) REFERENCES `cidades` (`idCidade`);
-
-
-ALTER TABLE `colaboradores`
-  ADD CONSTRAINT `FK_Colaboradores_Estados` FOREIGN KEY (`idEstado`) REFERENCES `estados` (`idEstado`),
-  ADD CONSTRAINT `FK_Colaboradores_Cidades` FOREIGN KEY (`idCidade`) REFERENCES `cidades` (`idCidade`),
-  ADD CONSTRAINT `FK_Colaboradores_Perfils` FOREIGN KEY (`idPerfil`) REFERENCES `perfils` (`idPerfil`);
-
-ALTER TABLE `respostasPerguntas`
-  ADD CONSTRAINT `FK_Respostas_Perguntas` FOREIGN KEY (`idLei`) REFERENCES `Perguntas` (`idLei`);
 

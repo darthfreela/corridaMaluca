@@ -134,10 +134,10 @@
 										<?php 
 											$mysql = new conexao;
 											$lista = $mysql->sql_query("SELECT posPerg.perguntasvariaveis_id AS id, 
-																			posPerg.nome AS nome,
-																			posPerg.pergunta AS pergunta,
-																		FROM posvenda_perguntasvariaveis AS posPerg
-																		ORDER BY posPerg.nome ASC");
+                                                                                                                        posPerg.nome AS nome,
+                                                                                                                        posPerg.pergunta AS pergunta
+                                                                                                                FROM posvenda_perguntasvariaveis AS posPerg
+                                                                                                                ORDER BY posPerg.nome ASC");
 											while($perguntas = mysql_fetch_object($lista)){
 										?>
 											<tr>
@@ -156,10 +156,10 @@
 										<?php 
 											}
 											$lista = $mysql->sql_query("SELECT posPergFix.perguntasfixas_id AS id, 
-																			posPergFix.nome AS nome,
-																			posPergFix.pergunta AS pergunta,
-																		FROM posvenda_perguntasfixas AS posPergFix
-																		ORDER BY posPergFix.nome ASC");
+                                                                                                                        posPergFix.nome AS nome,
+                                                                                                                        posPergFix.pergunta AS pergunta
+                                                                                                                FROM posvenda_perguntasfixas AS posPergFix
+                                                                                                                ORDER BY posPergFix.nome ASC");
 											while($perguntas = mysql_fetch_object($lista)){
 										?>
 											<tr>

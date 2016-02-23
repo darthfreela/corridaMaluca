@@ -134,13 +134,13 @@
                                     <tbody>
 										<?php 
 											$mysql = new conexao;
-											$lista = $mysql->sql_query("SELECT opor.principal_oportunidades AS id, 
-																			opor.nome AS nome,
-																			opor.tipo_oportunidades AS tipo,
-																			opor.dta_inicio AS dtaInicio,
-																			opor.dta_fim AS dtaFim,
-																		FROM principal_oportunidades AS opor
-																		ORDER BY opor.nome ASC");
+											$lista = $mysql->sql_query("SELECT opor.oportunidade_id AS id, 
+                                                                                                                        opor.nome AS nome,
+                                                                                                                        opor.tipo_oportunidades AS tipo,
+                                                                                                                        opor.dta_inicio AS dtaInicio,
+                                                                                                                        opor.dta_fim AS dtaFim
+                                                                                                                FROM principal_oportunidades AS opor
+                                                                                                                ORDER BY opor.nome ASC");
 											while($oportunidades = mysql_fetch_object($lista)){
 										?>
 											<tr>

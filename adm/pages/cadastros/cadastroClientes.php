@@ -229,7 +229,7 @@ if(isset($_POST["txtNome"])){
 																		ORDER BY nome ASC");
 											while($cidades = mysql_fetch_object($lista)){
 										?>
-											<option value="<?php echo $cbCidade];?>" <?php echo ($resultado["cidade"] == $cbCidade) ? "selected='selected'" : "" ?>>
+											<option value="<?php echo $cbCidade;?>" <?php echo ($resultado["cidade"] == $cbCidade) ? "selected='selected'" : "" ?>>
 												<?php echo $cbCidade;?>
 											</option>
 										<?php 
