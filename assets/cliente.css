@@ -53,9 +53,9 @@ body {
 }
 /*============================FIM CLIENTE INDEX=============================================================*/
 /*============================INICIO CLIENTE SIM=============================================================*/
-.txtNumero {
-	position: relative;
-    width: 21em;
+.txtNumero {	
+    position: relative;
+    width: 16em;
     height: 3em;
     font-size: 3em;
     color: BLACK;

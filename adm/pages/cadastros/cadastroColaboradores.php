@@ -1,22 +1,12 @@
-<<<<<<< HEAD
+
 <?php
 include("../../funcoes/conexao.php");
 $connect = new conexao();
 if (array_key_exists("enviar", $_POST)) {
-
-=======
-<?php 
-include("../../funcoes/conexao.php");
-
-if(isset($_POST["txtNome"])){
-	
->>>>>>> origin/master
     $nome = $_POST["txtNome"];
     $telefone = $_POST["txtTelefone"];
     $dtaAdmissao = $_POST["dtaAdmissao"];
     $perfil = $_POST["cbPerfil"];
-<<<<<<< HEAD
-
     if (($nome == "") || ($telefone == "") || ($bairro == "") || ($estado == "0") || ($cidade == "")) {
         echo "Preencha as informações corretamente.";
         exit;
@@ -33,23 +23,6 @@ if(isset($_POST["txtNome"])){
         if ($retorno > 0) {
             echo "<script>alert('Cliente atualizado/inserido com sucesso.');</script>";
             echo "<script>window.location = 'colaboradores.php';</script>";
-=======
-    
-	if( ($nome == "") || ($telefone == "") || ($bairro == "") || ($estado == "0") || ($cidade == "") ){
-        echo "Preencha as informações corretamente.";
-        exit;
-    } else {
-		if($_GET["id"] != null){
-			$SQL = "UPDATE principal_usuarios SET nome = '".$nome."', telefone = '".$telefone."', dtaAdmissao = '".$dtaAdmissao."', perfil = ".$perfil. "WHERE clientes_id = ".$GET["id"];
-		}else{
-			$SQL = "INSERT INTO principal_usuarios VALUES('".$nome."', '".$telefone."', '".$perfil."', ".$dtaAdmissao.")";
-		}
-        
-        $query = mysql_query($SQL);
-        if(mysql_affected_rows($conn) > 0){
-            echo "<script>alert('Cliente atualizado/inserido com sucesso.');</script>";
-            echo "<script>window.location = 'clientes.php';</script>";
->>>>>>> origin/master
         } else {
             echo "<script>alert('Erro ao atualizar/inserir o cliente.');</script>";
         }
@@ -59,7 +32,7 @@ if(isset($_POST["txtNome"])){
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<<<<<<< HEAD
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -135,7 +108,6 @@ if(isset($_POST["txtNome"])){
                 <a href="default.php" class="logo">
                     <span class="logo-mini"><b>CM</b></span>
                     <span class="logo-lg"><b>Corrida Maluca</b></span>
-=======
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -215,7 +187,6 @@ if(isset($_POST["txtNome"])){
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
->>>>>>> origin/master
                 </a>
                 <nav class="navbar navbar-static-top" role="navigation">
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -278,7 +249,7 @@ if(isset($_POST["txtNome"])){
                             </ul>
                         </li>
                     </ul>
-<<<<<<< HEAD
+
                 </section>
             </aside>
             <div class="content-wrapper">
@@ -504,261 +475,6 @@ if(isset($_POST["txtNome"])){
                     </form>
             </div>
         </div>
-=======
-                </div>
-            </nav>
-        </header>
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="../../dist/img/usuario.png" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>Usuário Padrão</p>
-                    </div>
-                </div>
-                <ul class="sidebar-menu">
-                    <li class="header">Menu</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-files-o"></i>
-                            <span>Cadastros</span>
-                            <span class="label label-primary pull-right">4</span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../../pages/cadastros/clientes.php"><i class="fa fa-circle-o"></i>Clientes</a></li>
-                            <li><a href="../../pages/cadastros/colaboradores.php"><i class="fa fa-circle-o"></i>Colaboradores</a></li>
-                            <li><a href="../../pages/cadastros/perguntas.php"><i class="fa fa-circle-o"></i>Perguntas</a></li>
-                            <li><a href="../../pages/cadastros/oportunidades.php"><i class="fa fa-circle-o"></i>Oportunidades</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-        </aside>
-        <div class="content-wrapper">
-            <section class="content-header">
-                <h1>Cadastro de Clientes
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="../../default.php"><i class="fa fa-dashboard"></i>Home</a></li>
-                    <li><a href="../../pages/cadastros/clientes.php">Colaboradores</a></li>
-                    <li><a href="../../pages/cadastros/cadastroColaboradores.php">Cadstro Colaboradores</a></li>
-                </ol>
-            </section>
-            <section class="content">
-				<form role="form">
-					<div class="col-md-12">
-						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#pessoais" data-toggle="tab">Dados Pessoais</a></li>
-								<li><a href="#empresarias" data-toggle="tab">Dados Empresarias</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="active tab-pane" id="pessoais">
-									<div>
-										<div class="box-body">
-										<?php
-											if(isset($GET["id"])){
-												if(is_numeric($GET["id"])){
-													$mysql = new conexao;
-													$lista = "SELECT usua.usuarios_id AS id, 
-																usua.nome AS nome,
-																usua.telefone AS telefone,
-																usua.perfil AS perfil,
-																usua.data_admissao AS data_admissao.
-															FROM principal_usuarios AS usua
-															WHERE usua.clientes_id = ".$GET["id"];
-													while($clientes = mysql_fetch_object($lista)){
-														$nome = $clientes["nome"];
-														$telefone = $clientes["telefone"];
-														$dtaAdmissao = $clientes["data_admissao"];
-														$cbPerfil = $clientes["perfil"];
-													}	
-												}
-											}else{
-												$nome = "";
-												$telefone = "";
-												$dtaAdmissao = "";
-												$cbPerfil = "";
-											}
-										?>
-											<div class="form-group col-md-5">
-												<label for="txtNome">Nome</label>
-												<input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Nome" required value="<?php echo $nome;?>">
-											</div>
-										   
-											<div class="form-group col-md-3">
-												<label for="txtTelefone">Telefone</label>
-												<input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="Telefone" required value="<?php echo $telefone;?>">
-											</div>
-										</div>											
-									</div>
-								</div>
-								<div class="tab-pane" id="empresarias">
-									<div>
-										<div class="box-body">
-											<div class="form-group col-md-3">
-												<label for="dtaAdmissao">Data Admissão</label>
-												<input type="date" class="form-control" id="dtaAdmissao" name="dtaAdmissao" placeholder="Data Admissão" required value="<?php echo $dtaAdmissao;?>">
-											</div>
-											 <div class="form-group col-md-4">
-												<label for="cbPerfil">Perfil</label>
-												<select class="form-control" class="form-control" id="cbPerfil" name="cbPerfil" placeholder="Perfil" required>
-													<option value="Administrador">Administrador</option>
-													<option value="Gestor">Gestor</option>
-													<option value="Lider">Lider</option>
-													<option value="Operacional">Operacional</option>
-												</select>
-											</div>
-										</div>
-										<div class="nav-tabs-custom">
-											<ul class="nav nav-tabs">
-												<li class="active"><a href="#feedback" data-toggle="tab">Histórico de Feedback</a></li>
-												<li><a href="#fisico" data-toggle="tab">Histórico Físico</a></li>
-												<li><a href="#psicologico" data-toggle="tab">Histórico Psicológico</a></li>
-												<li><a href="#sistemico" data-toggle="tab">Histórico Sistêmico</a></li>
-												<li><a href="#qualificacao" data-toggle="tab">Histórico de Qualificação</a></li>
-											</ul>
-											<div class="tab-content">
-												<div class="active tab-pane" id="feedback">
-													<div class="box">
-														<div class="box-body">
-															<table id="tblFeedBack" class="table table-bordered table-striped">
-																<thead>
-																	<tr>
-																		<th style="width: 7%;">Codigo</th>
-																		<th style="width: 50%;">Nome</th>
-																		<th style="width: 10%;">Feeback</th>
-																		<th style="width: 33%;">Data</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1</td>
-																		<td>Joao</td>
-																		<td>ExameExameExameExameExameExameExameExame</td>
-																		<td>01/01/2001</td>
-																	</tr>
-																	
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="fisico">
-													<div class="box">
-														<div class="box-body">
-															<table id="tblFisico" class="table table-bordered table-striped">
-																<thead>
-																	<tr>
-																		<th style="width: 7%;">Codigo</th>
-																		<th style="width: 50%;">Ação</th>
-																		<th style="width: 40%;">Descrição</th>
-																		<th style="width: 10%;">Data</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1</td>
-																		<td>Exame</td>
-																		<td>ExameExameExameExameExameExameExameExame</td>
-																		<td>01/01/2001</td>
-																	</tr>
-																	
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="psicologico">
-												<div class="box">
-														<div class="box-body">
-															<table id="tblPsicologico" class="table table-bordered table-striped">
-																<thead>
-																	<tr>
-																		<th style="width: 7%;">Codigo</th>
-																		<th style="width: 30%;">Aspecto</th>
-																		<th style="width: 60%;">Descrição</th>
-																		<th style="width: 13%;">Data</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1</td>
-																		<td>Joao</td>
-																		<td>asdkjadkjakdj jkasjdkasjdksd jakdsjaks</td>
-																		<td>01/01/2010</td>
-																	</tr>
-																	
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="sistemico">
-													<div class="box">
-														<div class="box-body">
-															<table id="tblSistemico" class="table table-bordered table-striped">
-																<thead>
-																	<tr>
-																		<th style="width: 7%;">Codigo</th>
-																		<th style="width: 30%;">Atividade</th>
-																		<th style="width: 60%;">Descrição</th>
-																		<th style="width: 13%;">Data</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1</td>
-																		<td>Joao</td>
-																		<td>asdkjadkjakdj jkasjdkasjdksd jakdsjaks</td>
-																		<td>01/01/2010</td>
-																	</tr>
-																	
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="qualificacao">
-													<div class="box">
-														<div class="box-body">
-															<table id="tblQualificacao" class="table table-bordered table-striped">
-																<thead>
-																	<tr>
-																		<th style="width: 7%;">Codigo</th>
-																		<th style="width: 10%;">Qualificacao</th>
-																		<th style="width: 83%;">Descrição</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>1</td>
-																		<td>Joao</td>
-																		<td>Rua 1, bairro 1, cidade 1</td>
-																	</tr>
-																	
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">Salvar</button>
-						<button type="reset" class="btn btn-danger ">Limpar</button>
-					</div>
-				</form>
-			</div>
-		</div>
->>>>>>> origin/master
     </section>
 </div>
 <div class="control-sidebar-bg"></div>
