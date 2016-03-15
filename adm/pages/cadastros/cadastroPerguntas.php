@@ -11,19 +11,19 @@ if (array_key_exists("enviar", $_POST)) {
         exit;
     } else {
          if (array_key_exists("id", $_POST)) {
-            if ($_GET[variavel] == "SIM") {
-                $SQL = "UPDATE posvenda_perguntasvariaveis SET nome = '" . $nome . "', pergunta = '" . $pergunta . "WHERE perguntasvariaveis_id = " . $_POST["id"];
+            if ($_GET["variavel"] == "SIM") {
+                $SQL = "UPDATE posvenda_perguntasvariaveis SET nome = '" . $nome . "', pergunta = '" . $pergunta . "WHERE perguntasvariaveis_id = " . $_GET["id"];
             } else {
-                $SQL = "UPDATE posvenda_perguntasfixas SET nome = '" . $nome . "', pergunta = '" . $pergunta . "WHERE perguntasfixas_id = " . $_POST["id"];
+                $SQL = "UPDATE posvenda_perguntasfixas SET nome = '" . $nome . "', pergunta = '" . $pergunta . "WHERE perguntasfixas_id = " . $_GET["id"];
             }
         } else {
-            if ($_GET[variavel] == "SIM") {
+            if (isset($_POST["chbVariavel"])) {
                 $SQL = "INSERT INTO posvenda_perguntasvariaveis VALUES('" . $nome . "', '" . $pergunta . ")";
             } else {
                 $SQL = "INSERT INTO posvenda_perguntasfixas VALUES('" . $nome . "', '" . $pergunta . ")";
             }
         }
-		$connect->conectar();
+	$connect->conectar();
         $connect->set("sql", $SQL);
         $retorno = $connect->executar();
         if ($retorno > 0) {
@@ -210,8 +210,8 @@ if (array_key_exists("enviar", $_POST)) {
                                             <input type="text" class="form-control" id="txtPergunta" name="txtPergunta" placeholder="Pergunta" required value="<?php echo $perguntasPreenchidas; ?>">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="txtBairro">Variável</label>
-                                            <input type="checkbox" value="Sim" name="var[]" <?php is_checked(); ?>/>
+                                            <label for="txtBairro">Variável</label></br>
+                                            <input type="checkbox" id="chbVariavel" value="Sim" name="var[]" <?php is_checked(); ?>/>
                                         </div>
 
                                     </div>

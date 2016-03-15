@@ -1,8 +1,8 @@
-
 <?php
 include("../../funcoes/conexao.php");
 $connect = new conexao();
 if (array_key_exists("enviar", $_POST)) {
+    $id = $_POST["ID"];
     $nome = $_POST["txtNome"];
     $telefone = $_POST["txtTelefone"];
     $dtaAdmissao = $_POST["dtaAdmissao"];
@@ -11,8 +11,8 @@ if (array_key_exists("enviar", $_POST)) {
         echo "Preencha as informações corretamente.";
         exit;
     } else {
-        if ($_GET["id"] != null) {
-            $SQL = "UPDATE principal_usuarios SET nome = '" . $nome . "', telefone = '" . $telefone . "', dtaAdmissao = '" . $dtaAdmissao . "', perfil = " . $perfil . "WHERE clientes_id = " . $GET["id"];
+        if ($id <> "") {
+            $SQL = "UPDATE principal_usuarios SET nome = '" . $nome . "', telefone = '" . $telefone . "', dtaAdmissao = '" . $dtaAdmissao . "', perfil = " . $perfil . " WHERE clientes_id = " . $id;
         } else {
             $SQL = "INSERT INTO principal_usuarios (nome, telefone, perfil, data_admissao) VALUES('" . $nome . "', '" . $telefone . "', '" . $perfil . "', " . $dtaAdmissao . ")";
         }
@@ -45,6 +45,7 @@ if (array_key_exists("enviar", $_POST)) {
         <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <script src="../../plugins/jQuery/jquery.mask.min.js"></script>
         <script src="../../bootstrap/js/bootstrap.min.js"></script>
         <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -52,6 +53,7 @@ if (array_key_exists("enviar", $_POST)) {
         <script src="../../plugins/fastclick/fastclick.min.js"></script>
         <script src="../../dist/js/app.min.js"></script>
         <script src="../../dist/js/demo.js"></script>
+	<script src="../../dist/js/cliente.js"></script>
         <script>
             $(function() {
                 $('#tblQualificacao').DataTable({
@@ -107,82 +109,7 @@ if (array_key_exists("enviar", $_POST)) {
             <header class="main-header">
                 <a href="default.php" class="logo">
                     <span class="logo-mini"><b>CM</b></span>
-                    <span class="logo-lg"><b>Corrida Maluca</b></span>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Corrida Maluca --> Cadastro de Colaboradores</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="../../plugins/fastclick/fastclick.min.js"></script>
-    <script src="../../dist/js/app.min.js"></script>
-    <script src="../../dist/js/demo.js"></script>
-    <script>
-        $(function () {
-            $('#tblQualificacao').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });
-			$('#tblSistemico').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });
-			$('#tblPsicologico').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });
-			$('#tblFisico').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });
-			$('#tblFeedBack').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
-            });															
-        });
-    </script>
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-
-        <header class="main-header">
-            <a href="default.php" class="logo">
-                <span class="logo-mini"><b>CM</b></span>
-                <span class="logo-lg"><b>Corrida Maluca</b></span>
+                    <span class="logo-lg"><b>Corrida Maluca</b></span>             
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -288,6 +215,7 @@ if (array_key_exists("enviar", $_POST)) {
 														$connect->set("sql", $sqlForm);
 														$lista = $connect->executar();
                                                         while ($clientes = mysql_fetch_object($lista)) {
+                                                            $id = $clientes->id;
                                                             $nome = $clientes->nome;
                                                             $telefone = $clientes->telefone;
                                                             $dtaAdmissao = $clientes->data_admissao;
@@ -295,12 +223,14 @@ if (array_key_exists("enviar", $_POST)) {
                                                         }
                                                     }
                                                 } else {
+                                                    $id = "";
                                                     $nome = "";
                                                     $telefone = "";
                                                     $dtaAdmissao = "";
                                                     $cbPerfil = "";
                                                 }
                                                 ?>
+                                                <input type="hidden" name="ID" id="ID" value="<?php echo $id; ?>"/>
                                                 <div class="form-group col-md-5">
                                                     <label for="txtNome">Nome</label>
                                                     <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Nome" required value="<?php echo $nome; ?>">

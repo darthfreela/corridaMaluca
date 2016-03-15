@@ -2,6 +2,7 @@
 	include("../../funcoes/conexao.php");
 	$connect = new conexao();
 	if (array_key_exists("enviar", $_POST)) {
+		$id = $_POST["ID"];
 		$nome = $_POST["txtNome"];
 		$telefone = $_POST["txtTelefone"];
 		$bairro = $_POST["txtBairro"];
@@ -12,11 +13,11 @@
 			echo "Preencha as informações corretamente.";
 			exit;
 		} else {
-			if (array_key_exists("id", $_POST)) {
-				$SQL = "UPDATE principal_clientes SET nome = '" . $nome . "', telefone = '" . $telefone . "', bairro = '" . $bairro . "', estado = " . $estado . ",cidade = " . $cidade . "WHERE clientes_id = " . $_POST["id"];
-			} else {
+			if ($id == "") {
 				$SQL = "INSERT INTO principal_clientes (nome, telefone, bairro, cidade, estado) 
 					VALUES('" . $nome . "', '" . $telefone . "', '" . $bairro . "'," . $cidade . "," . $estado . ")";
+			} else {
+				$SQL = "UPDATE principal_clientes SET nome = '" . $nome . "', telefone = '" . $telefone . "', bairro = '" . $bairro . "', estado = " . $estado . ",cidade = " . $cidade . " WHERE clientes_id = " . $id;
 			}
 		}
 		$connect->conectar();
@@ -24,7 +25,7 @@
 		$retorno = $connect->executar();
 		if ($retorno > 0) {
 			echo "<script>alert('Cliente atualizado/inserido com sucesso.');</script>";
-			echo "<script>window.location = 'clientes.php';</script>";
+			echo "<script>window.location.replace = 'clientes.php';</script>";
 		} else {
 			echo "<script>alert('Erro ao atualizar/inserir o cliente.');</script>";
 		}
@@ -45,13 +46,15 @@
 		<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../plugins/jQuery/jquery.mask.min.js"></script>
 		<script src="../../bootstrap/js/bootstrap.min.js"></script>
 		<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
 		<script src="../../plugins/fastclick/fastclick.min.js"></script>
 		<script src="../../dist/js/app.min.js"></script>
-		<script src="../../dist/js/demo.js"></script>		
+		<script src="../../dist/js/demo.js"></script>
+		<script src="../../dist/js/cliente.js"></script>	
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/Rua 56, bairro 56, cidade 567.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -158,6 +161,7 @@
 										$connect->set("sql", $sqlForm);
 										$lista = $connect->executar();
 										while ($clientes = mysql_fetch_object($lista)) {
+											$id = $clientes->id;
 											$nome = $clientes->nome;
 											$telefone = $clientes->telefone;
 											$bairro = $clientes->bairro;
@@ -166,6 +170,7 @@
 										}
 									}
 								} else {
+									$id = "";
 									$nome = "";
 									$telefone = "";
 									$bairro = "";
@@ -174,6 +179,7 @@
 								}
 							?>
 							<form action="cadastroClientes.php" method="post">
+								<input type="hidden" name="ID" id="ID" value="<?php echo $id; ?>"/>
 								<div class="box-body">
 									<div class="form-group col-md-5">
 										<label for="txtNome">Nome</label>

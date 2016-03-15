@@ -130,20 +130,20 @@ include("../../funcoes/conexao.php");
                                                 <th style="width: 10%;">Telefone</th>
                                                 <th style="width: 33%;">Admissão</th>
                                             </tr>
-                                        </thead>a
+                                        </thead>
                                         <tbody>
-												<?php
-													$connect = new conexao();
-													$connect->conectar();
-													$SQL = "SELECT usua.usuarios_id AS id, 
-																	usua.nome AS nome,
-																	usua.telefone AS telefone,
-																	usua.perfil AS perfil,
-																	usua.data_admissao AS admissao
-																FROM principal_usuarios AS usua
-																ORDER BY usua.usuarios_id ASC";
-													$connect->set("sql", $SQL);
-													$lista = $connect->executar();
+                                        <?php
+                                                $connect = new conexao();
+                                                $connect->conectar();
+                                                $SQL = "SELECT usua.usuarios_id AS id, 
+                                                                                usua.nome AS nome,
+                                                                                usua.telefone AS telefone,
+                                                                                usua.perfil AS perfil,
+                                                                                usua.data_admissao AS admissao
+                                                                        FROM principal_usuarios AS usua
+                                                                        ORDER BY usua.usuarios_id ASC";
+                                                $connect->set("sql", $SQL);
+                                                $lista = $connect->executar();
                                             while ($usuarios = mysql_fetch_object($lista)) {
                                                 ?>
                                                 <tr>

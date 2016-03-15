@@ -133,19 +133,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-												$connect = new conexao();
-												$connect->conectar();
-												$SQL = "SELECT opor.oportunidade_id AS id, 
-																opor.nome AS nome,
-																opor.tipo_oportunidades AS tipo,
-																opor.dta_inicio AS dtaInicio,
-																opor.dta_fim AS dtaFim
-															FROM principal_oportunidades AS opor
-															ORDER BY opor.nome ASC");
-												$connect->set("sql", $SQL);
-												$lista = $connect->executar();
-												while ($oportunidades = mysql_fetch_object($lista)) {
+                                                <?php
+                                                        $connect = new conexao();
+                                                        $connect->conectar();
+                                                        $SQL = "SELECT opor.oportunidade_id AS id, 
+                                                                                        opor.nome AS nome,
+                                                                                        opor.tipo_oportunidades AS tipo,
+                                                                                        opor.dta_inicio AS dtaInicio,
+                                                                                        opor.dta_fim AS dtaFim
+                                                                                FROM principal_oportunidades AS opor
+                                                                                ORDER BY opor.nome ASC";
+                                                        $connect->set("sql", $SQL);
+                                                        $lista = $connect->executar();
+                                                        while ($oportunidades = mysql_fetch_object($lista)) {
                                                 ?>
                                                 <tr>
                                                     <td>

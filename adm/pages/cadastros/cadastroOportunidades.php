@@ -14,8 +14,8 @@ if (array_key_exists("enviar", $_POST)) {
         echo "Preencha as informações corretamente.";
         exit;
     } else {
-        if ($GET["id"] != null) {
-            $SQL = "UPDATE principal_oportunidades SET nome = '" . $nome . "', descricao = '" . $descricao . "', tipo_oportunidades = '" . $tipo . "', local_oportunidade = '" . $localOportunidade . "', dta_inicio = " . $dtaInicio . ", dta_fim = " . $dtaFim . "WHERE oportunidade_id = " . $GET["id"];
+        if (array_key_exists("id", $_GET)) {
+            $SQL = "UPDATE principal_oportunidades SET nome = '" . $nome . "', descricao = '" . $descricao . "', tipo_oportunidades = '" . $tipo . "', local_oportunidade = '" . $localOportunidade . "', dta_inicio = " . $dtaInicio . ", dta_fim = " . $dtaFim . "WHERE oportunidade_id = " . $_GET["id"];
         } else {
             $SQL = "INSERT INTO principal_oportunidades VALUES('" . $nome . "', '" . $descricao . "','" . $tipo . "', '" . $localOportunidade . "', " . $dtaInicio . ", " . $dtaFim . ")";
         }	
@@ -185,7 +185,7 @@ if (array_key_exists("enviar", $_POST)) {
                                     }
                                 } else {
                                     $nome = "";
-                                    $descricao = "";
+                                    $descricao = " ";
                                     $tipo = "";
                                     $dtaInicio = "";
                                     $dtaFim = "";
@@ -217,9 +217,10 @@ if (array_key_exists("enviar", $_POST)) {
                                                 <option value="Curso">Curso</option>
                                             </select>	
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-9">
                                             <label for="txtDescricao">Descrição</label>
-                                            <textarea class="form-control" cols=60 id="txtDescricao" rows="10" name="txtDescricao" maxlength="500" wrap="hard" placeholder="Descrição Oportunidades" value="<?php echo $descricao; ?>" required/>
+                                            <textarea class="form-control" cols=60 id="txtDescricao" rows="10" name="txtDescricao" maxlength="500" wrap="hard" placeholder="Descrição Oportunidades" value="<?php echo $descricao; ?>" required>
+                                            </textarea>
                                         </div>
 
                                     </div>

@@ -132,13 +132,13 @@ include("../../funcoes/conexao.php");
                                         </thead>
                                         <tbody>
                                             <?php
-											$connect = new conexao();
-                                            $connect->conectar();
-                                            $SQL = "SELECT posPerg.perguntasvariaveis_id AS id, 
-															posPerg.nome AS nome,
-															posPerg.pergunta AS pergunta
-														FROM posvenda_perguntasvariaveis AS posPerg
-														ORDER BY posPerg.nome ASC");
+                                                $connect = new conexao();
+                                                $connect->conectar();
+                                                $SQL = "SELECT posPerg.perguntasvariaveis_id AS id, 
+                                                                        posPerg.nome AS nome,
+                                                                        posPerg.pergunta AS pergunta
+                                                                FROM posvenda_perguntasvariaveis AS posPerg
+                                                                ORDER BY posPerg.nome ASC";
                                             $connect->set("sql", $SQL);
                                             $lista = $connect->executar();
                                             while ($perguntas = mysql_fetch_object($lista)) {
@@ -158,13 +158,13 @@ include("../../funcoes/conexao.php");
                                                 </tr>
                                                 <?php
                                             }
-											$connect->conectar();
-                                            $SQL = "SELECT posPergFix.perguntasfixas_id AS id, 
-															posPergFix.nome AS nome,
-															posPergFix.pergunta AS pergunta
-														FROM posvenda_perguntasfixas AS posPergFix
-														ORDER BY posPergFix.nome ASC");
-                                            $connect->set("sql", $SQL);
+                                                $connect->conectar();
+                                                $SQL = "SELECT posPergFix.perguntasfixas_id AS id, 
+                                                                posPergFix.nome AS nome,
+                                                                posPergFix.pergunta AS pergunta
+                                                        FROM posvenda_perguntasfixas AS posPergFix
+                                                        ORDER BY posPergFix.nome ASC";
+                                                   $connect->set("sql", $SQL);
                                             $lista = $connect->executar();
                                             while ($perguntas = mysql_fetch_object($lista)) {
                                                 ?>
